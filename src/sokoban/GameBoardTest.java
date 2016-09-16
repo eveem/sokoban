@@ -56,5 +56,13 @@ public class GameBoardTest {
 	        assertFalse(smallBoard.hasPlayerAt(1,4));
 	        assertTrue(smallBoard.hasPlayerAt(2, 3));
 	    }
+	    
+	    @Test
+	    public void testPlayerPositionCheckOutside() {
+	        assertFalse(smallBoard.hasPlayerAt(-10, 1));
+	        assertFalse(smallBoard.hasPlayerAt(1, -10));
+	        assertFalse(smallBoard.hasPlayerAt(1, 100));
+	        assertFalse(smallBoard.hasPlayerAt(100, 1));
+	    }
 
 }
