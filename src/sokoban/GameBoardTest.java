@@ -64,5 +64,17 @@ public class GameBoardTest {
 	        assertFalse(smallBoard.hasPlayerAt(1, 100));
 	        assertFalse(smallBoard.hasPlayerAt(100, 1));
 	    }
+	    
+	    @Test
+	    public void testExitPositionCheck() {
+	        assertFalse(smallBoard.hasExitAt(0, 0));
+	    }
+	    
+	    @Test
+	    public void testExitPositionCheckOutsideBoard() {
+	        assertFalse(smallBoard.hasExitAt(-10, -1));
+	        assertFalse(smallBoard.hasExitAt(100, 1));
+	        assertFalse(smallBoard.hasExitAt(1, 500));
+	    }
 
 }
