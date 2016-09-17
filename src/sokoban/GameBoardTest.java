@@ -71,6 +71,12 @@ public class GameBoardTest {
 	    }
 	    
 	    @Test
+	    public void testExitPositionCheckReturnTrue() {
+	        assertTrue(smallBoard.hasExitAt(1, 1));
+	        assertTrue(smallBoard.hasExitAt(3, 4));
+	    }
+	    
+	    @Test
 	    public void testExitPositionCheckOutsideBoard() {
 	        assertFalse(smallBoard.hasExitAt(-10, -1));
 	        assertFalse(smallBoard.hasExitAt(100, 1));
