@@ -82,5 +82,23 @@ public class GameBoardTest {
 	        assertFalse(smallBoard.hasExitAt(100, 1));
 	        assertFalse(smallBoard.hasExitAt(1, 500));
 	    }
+	    
+	    @Test
+	    public void testBoxPositionCheck() {
+	        assertFalse(smallBoard.hasBoxAt(0, 0));
+	    }
+	    
+	    @Test
+	    public void testBoxPositionCheckReturnTrue() {
+	        assertTrue(smallBoard.hasBoxAt(1, 2));
+	        assertTrue(smallBoard.hasBoxAt(2, 4));
+	    }
+	    
+	    @Test
+	    public void testBoxPositionCheckOutsideBoard() {
+	        assertFalse(smallBoard.hasBoxAt(-10, -1));
+	        assertFalse(smallBoard.hasBoxAt(100, 1));
+	        assertFalse(smallBoard.hasBoxAt(1, 500));
+	    }
 
 }
