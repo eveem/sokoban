@@ -223,4 +223,19 @@ public class GameBoard {
     public boolean canPlayerStepOn(char item) {
         return (item == '.') || (item == '*') || (item == ' ') || (item == 'O');
     }
+    
+    public boolean isSolved() {
+    	int countSolved = 0;
+        for (int i=0; i<numBoxes; i++) {
+        	for (int j=0; j<numExits; j++) {
+        		if (boxRows[i] == exitRows[j] && boxCols[i] == exitCols[j]) {
+        			countSolved ++;
+        		}
+        	}
+        }
+        if (countSolved == numBoxes) {
+        	return true;
+        }
+    	return false;
+    }
 }

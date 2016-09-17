@@ -7,14 +7,11 @@ public class Main {
 
 	public static void main(String[] args) {
         String gameMap[] = {
-        		" #####   ",
-	            "##...### ",
-	            "#.*.*..# ",
-	            "#.#.##.##",
-	            "#....OOA#",
-	            "###.#...#",
-	            "  #...###",
-	            "  #####  "
+        		" #####",
+    	        "#*O.A#",
+    	        "#...O#",
+    	        "##..*#",
+    	        " #####"
         };
  
         GameBoard board = new GameBoard(gameMap);
@@ -26,6 +23,10 @@ public class Main {
             System.out.println(board);
             System.out.println();
  
+            if(board.isSolved()) {
+                System.out.println("You won.");
+                break;
+            }
             System.out.print("Your choice (awsd - movement, q - quit):");
  
             String choiceStr = scanner.nextLine();

@@ -194,4 +194,18 @@ public class BoardGameMovementTest {
 		            "  #####  \n",
 	                largeBoard.toString());
 	    }
+	    
+	    @Test
+	    public void testIsSolvedTrue() {
+	    	largeBoard.setBoxPosition(0, 2, 2);
+	    	largeBoard.setBoxPosition(1, 2, 4);
+	    	assertTrue(largeBoard.isSolved());
+	    }
+	    
+	    @Test
+	    public void testIsSolvedFalse() {
+	    	largeBoard.setBoxPosition(0, 1, 2);
+	    	largeBoard.setBoxPosition(1, 2, 4);
+	    	assertFalse(largeBoard.isSolved());
+	    }
 }
