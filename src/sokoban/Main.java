@@ -7,11 +7,14 @@ public class Main {
 
 	public static void main(String[] args) {
         String gameMap[] = {
-            " #####",
-            "#*O.A#",
-            "#...O#",
-            "##..*#",
-            " #####"
+        		" #####   ",
+	            "##...### ",
+	            "#.*.*..# ",
+	            "#.#.##.##",
+	            "#....OOA#",
+	            "###.#...#",
+	            "  #...###",
+	            "  #####  "
         };
  
         GameBoard board = new GameBoard(gameMap);

@@ -149,11 +149,36 @@ public class GameBoard {
     }
     
     void movePlayer(Direction dir) {
-    	int r = getPlayerRow() + getRowDiff(dir);
-    	int c = getPlayerCol() + getColDiff(dir);
+    	int index = -1;
+    	int targetrow = getPlayerRow();
+    	int targetcol = getPlayerCol();
     	if (canPlayerMove(dir)) {
-    		setPlayerPosition(r,c);
+    		targetrow += getRowDiff(dir);
+    		targetcol += getColDiff(dir);
     	}
+    	for (int i=0; i<numBoxes; i++) {
+        	int[] posebox = getBoxPosition(i);
+    		if (posebox[0] == targetrow && posebox[1] == targetcol) {
+        		index = i;
+        		break;
+        	}
+        }
+    	
+    	if (index != -1) {  		
+    		char nextis = getBoardNextItem(targetrow, targetcol, dir);
+			if (nextis == '.' || nextis == '*') {
+				int nextrowbox = targetrow + getRowDiff(dir);
+	    		int nextcolbox = targetcol + getColDiff(dir);
+				setBoxPosition(index, nextrowbox, nextcolbox);
+			}
+			if (nextis != '#' && nextis != 'O') {
+				setPlayerPosition(targetrow, targetcol);
+			}
+    	}
+    	else {
+    		setPlayerPosition(targetrow, targetcol);
+    	}
+    	
     }
     
     public int getColDiff(Direction dir) {
@@ -196,6 +221,6 @@ public class GameBoard {
     }
     
     public boolean canPlayerStepOn(char item) {
-        return (item == '.') || (item == '*') || (item == ' ');
+        return (item == '.') || (item == '*') || (item == ' ') || (item == 'O');
     }
 }

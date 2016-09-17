@@ -98,8 +98,8 @@ public class BoardGameMovementTest {
 	    
 	    @Test
 	    public void testCanPlayerMoveOverBox() {
-	    	assertFalse(smallBoard.canPlayerMove(GameBoard.Direction.DOWN));
-	    	assertFalse(largeBoard.canPlayerMove(GameBoard.Direction.LEFT));
+	    	assertTrue(smallBoard.canPlayerMove(GameBoard.Direction.DOWN));
+	    	assertTrue(largeBoard.canPlayerMove(GameBoard.Direction.LEFT));
 	    }
 	    
 	    @Test
@@ -132,7 +132,7 @@ public class BoardGameMovementTest {
 	    }
 	    
 	    @Test
-	    public void testToStringWithPlayerCantMove() {
+	    public void testToStringWithPlayerNotMove() {
 	    	largeBoard.movePlayer(GameBoard.Direction.DOWN);
 	    	largeBoard.movePlayer(GameBoard.Direction.DOWN);
 	    	assertEquals(		
@@ -142,6 +142,54 @@ public class BoardGameMovementTest {
 		            "#.#.##.##\n"+
 		            "#....OO.#\n"+
 		            "###.#..A#\n"+
+		            "  #...###\n"+
+		            "  #####  \n",
+	                largeBoard.toString());
+	    }
+	    
+	    @Test
+	    public void testCantMoveTwoBox() {
+	    	largeBoard.setPlayerPosition(4, 4);
+	    	largeBoard.movePlayer(GameBoard.Direction.RIGHT);
+	    	assertEquals(		
+	    			" #####   \n"+
+		            "##...### \n"+
+		            "#.*.*..# \n"+
+		            "#.#.##.##\n"+
+		            "#...AOO.#\n"+
+		            "###.#...#\n"+
+		            "  #...###\n"+
+		            "  #####  \n",
+	                largeBoard.toString());
+	    }
+	    
+	    @Test
+	    public void testCanMoveABox() {
+	    	largeBoard.setPlayerPosition(5, 6);
+	    	largeBoard.movePlayer(GameBoard.Direction.UP);
+	    	assertEquals(		
+	    			" #####   \n"+
+		            "##...### \n"+
+		            "#.*.*..# \n"+
+		            "#.#.##O##\n"+
+		            "#....OA.#\n"+
+		            "###.#...#\n"+
+		            "  #...###\n"+
+		            "  #####  \n",
+	                largeBoard.toString());
+	    }
+	    
+	    @Test
+	    public void testCantMoveBoxAndWall() {
+	    	largeBoard.setPlayerPosition(5, 5);
+	    	largeBoard.movePlayer(GameBoard.Direction.UP);
+	    	assertEquals(		
+	    			" #####   \n"+
+		            "##...### \n"+
+		            "#.*.*..# \n"+
+		            "#.#.##.##\n"+
+		            "#....OO.#\n"+
+		            "###.#A..#\n"+
 		            "  #...###\n"+
 		            "  #####  \n",
 	                largeBoard.toString());
