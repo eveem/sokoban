@@ -119,6 +119,24 @@ public class GameBoard {
     }
  
     public String toString() {
-        return "";
+    	String CurrentBoard = "";
+        for(int i=0; i<height; i++) {
+        	for(int j=0; j<width; j++) {
+        		if(hasPlayerAt(i,j)) {
+        			CurrentBoard += 'A';
+        		}
+        		else if(hasBoxAt(i,j)) {
+        			CurrentBoard += 'O';
+        		}
+        		else if(hasExitAt(i,j)) {
+        			CurrentBoard += '*';
+        		}
+        		else {
+        			CurrentBoard += baseBoard[i].charAt(j);
+        		}
+        	}
+        	CurrentBoard += '\n';
+        }
+    	return CurrentBoard;
     }
 }
