@@ -18,7 +18,7 @@ public class GameBoard {
     private int[] exitCols;
  
     public enum Direction {
-        UP, RIGHT, DOWN, LEFT
+        UP, RIGHT, DOWN, LEFT, STILL
     }
     
     public GameBoard(String[] map) {
