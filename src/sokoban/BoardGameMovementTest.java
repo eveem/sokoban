@@ -115,4 +115,35 @@ public class BoardGameMovementTest {
 	    	assertTrue(smallBoard.canPlayerMove(GameBoard.Direction.LEFT));
 	    	assertTrue(largeBoard.canPlayerMove(GameBoard.Direction.DOWN));
 	    }
+	    
+	    @Test
+	    public void testToStringWithMovePlayer() {
+	    	largeBoard.movePlayer(GameBoard.Direction.DOWN);
+	    	assertEquals(		
+	    			" #####   \n"+
+		            "##...### \n"+
+		            "#.*.*..# \n"+
+		            "#.#.##.##\n"+
+		            "#....OO.#\n"+
+		            "###.#..A#\n"+
+		            "  #...###\n"+
+		            "  #####  \n",
+	                largeBoard.toString());
+	    }
+	    
+	    @Test
+	    public void testToStringWithPlayerCantMove() {
+	    	largeBoard.movePlayer(GameBoard.Direction.DOWN);
+	    	largeBoard.movePlayer(GameBoard.Direction.DOWN);
+	    	assertEquals(		
+	    			" #####   \n"+
+		            "##...### \n"+
+		            "#.*.*..# \n"+
+		            "#.#.##.##\n"+
+		            "#....OO.#\n"+
+		            "###.#..A#\n"+
+		            "  #...###\n"+
+		            "  #####  \n",
+	                largeBoard.toString());
+	    }
 }

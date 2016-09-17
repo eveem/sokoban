@@ -145,11 +145,15 @@ public class GameBoard {
     }
     
     public boolean canPlayerMove(Direction dir) {
-    	return canPlayerStepOn(getBoardNextItem(playerRow, playerCol, dir));
+    	return canPlayerStepOn(getBoardNextItem(getPlayerRow(), getPlayerCol(), dir));
     }
     
     void movePlayer(Direction dir) {
-    	
+    	int r = getPlayerRow() + getRowDiff(dir);
+    	int c = getPlayerCol() + getColDiff(dir);
+    	if (canPlayerMove(dir)) {
+    		setPlayerPosition(r,c);
+    	}
     }
     
     public int getColDiff(Direction dir) {
