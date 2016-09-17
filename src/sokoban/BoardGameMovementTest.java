@@ -82,4 +82,37 @@ public class BoardGameMovementTest {
 	        assertEquals('.', largeBoard.getBoardNextItem(2, 2, GameBoard.Direction.LEFT));
 	    }
 	    
+	    @Test
+	    public void testCanPlayerMoveOverWall() {
+	    	assertFalse(smallBoard.canPlayerMove(GameBoard.Direction.RIGHT));
+	    	assertFalse(largeBoard.canPlayerMove(GameBoard.Direction.UP));
+	    }
+	    
+	    @Test
+	    public void testCanPlayerMoveOverSpace() {
+	    	smallBoard.setPlayerPosition(0, 1);
+	    	assertTrue(smallBoard.canPlayerMove(GameBoard.Direction.LEFT));
+	    	largeBoard.setPlayerPosition(5, 0);
+	    	assertTrue(largeBoard.canPlayerMove(GameBoard.Direction.DOWN));
+	    }
+	    
+	    @Test
+	    public void testCanPlayerMoveOverBox() {
+	    	assertFalse(smallBoard.canPlayerMove(GameBoard.Direction.DOWN));
+	    	assertFalse(largeBoard.canPlayerMove(GameBoard.Direction.LEFT));
+	    }
+	    
+	    @Test
+	    public void testCanPlayerMoveOverExit() {
+	    	smallBoard.setPlayerPosition(1, 0);
+	    	assertTrue(smallBoard.canPlayerMove(GameBoard.Direction.RIGHT));
+	    	largeBoard.setPlayerPosition(2, 5);
+	    	assertTrue(largeBoard.canPlayerMove(GameBoard.Direction.LEFT));
+	    }
+	    
+	    @Test
+	    public void testCanPlayerMoveOverDot() {
+	    	assertTrue(smallBoard.canPlayerMove(GameBoard.Direction.LEFT));
+	    	assertTrue(largeBoard.canPlayerMove(GameBoard.Direction.DOWN));
+	    }
 }

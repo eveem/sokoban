@@ -127,7 +127,6 @@ public class GameBoardTest {
 	    
 	    @Test
 	    public void testToStringWithSetBoxPositions() {
-	    	smallBoard = new GameBoard(smallBoardMap);
 	    	smallBoard.setBoxPosition(0, 1, 3);
 	    	assertEquals(		
 	                " #####\n"+
