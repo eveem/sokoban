@@ -145,7 +145,7 @@ public class GameBoard {
     }
     
     public boolean canPlayerMove(Direction dir) {
-    	return false;
+    	return canPlayerStepOn(getBoardNextItem(playerRow, playerCol, dir));
     }
     
     void movePlayer(Direction dir) {
@@ -189,5 +189,9 @@ public class GameBoard {
         else {
         	return baseBoard[r].charAt(c);
         }
+    }
+    
+    public boolean canPlayerStepOn(char item) {
+        return (item == '.') || (item == '*') || (item == ' ');
     }
 }
